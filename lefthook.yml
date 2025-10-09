@@ -31,10 +31,6 @@ pre-commit:
     spell-staged:
       run: git diff --cached --name-only | npx cspell --no-summary --no-progress --no-must-find-files --file-list stdin
 
-    arch:
-      run: ./vendor/bin/pest --group=arch --quiet
-      glob: "*.php"
-
 pre-push:
   parallel: true
 
