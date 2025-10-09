@@ -8,6 +8,10 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    groups:
+      actions-deps:
+        patterns:
+          - "*"
     labels:
       - "dependencies"
 
@@ -15,5 +19,10 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    groups:
+      dev-deps:
+        dependency-type: "development"
+      prod-deps:
+        dependency-type: "production"
     labels:
       - "dependencies"

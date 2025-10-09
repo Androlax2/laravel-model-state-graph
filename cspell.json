@@ -1,0 +1,30 @@
+{
+  "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+  "import": [
+    "./node_modules/@cspell/dict-software-terms/cspell-ext.json",
+    "./node_modules/@cspell/dict-php/cspell-ext.json"
+  ],
+  "dictionaries": [
+    "software-terms",
+    "php"
+  ],
+  "words": [
+    "Androlax",
+    "testbench",
+    "Théo",
+    "Benoit",
+    "analyse",
+    "commitlint",
+    "canvural",
+    "larastan",
+    "nunomaduro",
+    "pestphp",
+    "lefthook",
+    "shivammathur",
+    "mysqladmin",
+    "stefanzweifel",
+    "secretroot"
+  ],
+  "language": "en",
+  "useGitignore": true
+}

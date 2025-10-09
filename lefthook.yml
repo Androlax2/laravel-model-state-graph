@@ -1,0 +1,49 @@
+commit-msg:
+  scripts:
+    "commitlint.sh":
+      runner: bash
+    "spellcheck-commit-msg.sh":
+      runner: bash
+
+output:
+  - meta
+  - summary
+  - empty_summary
+  - success
+  - failure
+  - skips
+
+pre-commit:
+  parallel: true
+  commands:
+    pint:
+      run: ./vendor/bin/pint --dirty
+      stage_fixed: true
+
+    phpstan:
+      run: ./vendor/bin/phpstan analyse --no-progress
+      glob: "*.php"
+
+    rector-dry:
+      run: ./vendor/bin/rector --dry-run
+      glob: "*.php"
+
+    spell-staged:
+      run: git diff --cached --name-only | npx cspell --no-summary --no-progress --no-must-find-files --file-list stdin
+
+    arch:
+      run: ./vendor/bin/pest --group=arch --quiet
+      glob: "*.php"
+
+pre-push:
+  parallel: true
+
+  commands:
+    full-test:
+      run: composer test:unit
+
+    spell-complete:
+      run: composer test:spell || echo "cspell not available"
+
+    quality-gate:
+      run: composer test
