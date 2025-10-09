@@ -6,4 +6,7 @@ namespace Androlax\LaravelModelStateGraph;
 
 use Illuminate\Support\ServiceProvider;
 
-final class LaravelModelStateGraphServiceProvider extends ServiceProvider {}
+final class LaravelModelStateGraphServiceProvider extends ServiceProvider
+{
+    // ...
+}
