@@ -2,11 +2,14 @@
 
 namespace Androlax\LaravelModelStateGraph\Tests;
 
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Androlax\LaravelModelStateGraph\LaravelModelStateGraphServiceProvider;
 
 class TestCase extends Orchestra
 {
+    use DatabaseMigrations;
+
     protected function getPackageProviders($app): array
     {
         return [
