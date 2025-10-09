@@ -25,6 +25,9 @@
     "stefanzweifel",
     "secretroot"
   ],
+  "ignorePaths": [
+    "tests"
+  ],
   "language": "en",
   "useGitignore": true
 }
