@@ -3,17 +3,17 @@
 declare(strict_types=1);
 
 use Androlax\LaravelModelStateGraph\Exceptions\FieldNotFoundException;
-use Androlax\LaravelModelStateGraph\Tests\Fixtures\Models\TestModel;
+use Tests\Fixtures\Models\TestModel;
 
-it('creates exception with basic message', function () {
+it('creates exception with basic message', function (): void {
     $exception = new FieldNotFoundException('unknown_field', TestModel::class);
 
     expect($exception->getMessage())->toBe(
-        "Field 'unknown_field' does not exist on model [Androlax\LaravelModelStateGraph\Tests\Fixtures\Models\TestModel]."
+        "Field 'unknown_field' does not exist on model [Tests\Fixtures\Models\TestModel]."
     );
 });
 
-it('includes available fields in message', function () {
+it('includes available fields in message', function (): void {
     $exception = new FieldNotFoundException(
         'unknown_field',
         TestModel::class,
@@ -23,7 +23,7 @@ it('includes available fields in message', function () {
     expect($exception->getMessage())->toContain('Available fields: id, name, email');
 });
 
-it('suggests similar field names for typos', function () {
+it('suggests similar field names for typos', function (): void {
     $exception = new FieldNotFoundException(
         'emial',  // Typo of 'email'
         TestModel::class,
@@ -33,7 +33,7 @@ it('suggests similar field names for typos', function () {
     expect($exception->getMessage())->toContain('Did you mean: email?');
 });
 
-it('suggests multiple similar fields for partial matches', function () {
+it('suggests multiple similar fields for partial matches', function (): void {
     $exception = new FieldNotFoundException(
         'nam',  // Partial match
         TestModel::class,
@@ -47,7 +47,7 @@ it('suggests multiple similar fields for partial matches', function () {
         ->and($message)->toContain('first_name');
 });
 
-it('limits suggestions to three fields maximum', function () {
+it('limits suggestions to three fields maximum', function (): void {
     $exception = new FieldNotFoundException(
         'field',
         TestModel::class,
@@ -61,28 +61,28 @@ it('limits suggestions to three fields maximum', function () {
     expect($suggestions)->toHaveCount(3);
 });
 
-it('creates exception using factory method', function () {
+it('creates exception using factory method', function (): void {
     $model = new TestModel();
     $exception = FieldNotFoundException::forField('unknown_field', $model);
 
     expect($exception->getMessage())->toBe(
-        "Field 'unknown_field' does not exist on model [Androlax\LaravelModelStateGraph\Tests\Fixtures\Models\TestModel]."
+        "Field 'unknown_field' does not exist on model [Tests\Fixtures\Models\TestModel]."
     );
 });
 
-it('extracts field name from exception', function () {
+it('extracts field name from exception', function (): void {
     $exception = new FieldNotFoundException('test_field', TestModel::class);
 
     expect($exception->getField())->toBe('test_field');
 });
 
-it('extracts model class from exception', function () {
+it('extracts model class from exception', function (): void {
     $exception = new FieldNotFoundException('test_field', TestModel::class);
 
     expect($exception->getModelClass())->toBe(TestModel::class);
 });
 
-it('preserves code and previous exception', function () {
+it('preserves code and previous exception', function (): void {
     $previous = new RuntimeException('Previous exception');
     $exception = new FieldNotFoundException('test_field', TestModel::class, [], 123, $previous);
 
@@ -90,14 +90,14 @@ it('preserves code and previous exception', function () {
         ->and($exception->getPrevious())->toBe($previous);
 });
 
-it('handles empty available fields gracefully', function () {
+it('handles empty available fields gracefully', function (): void {
     $exception = new FieldNotFoundException('test_field', TestModel::class, []);
 
     expect($exception->getMessage())->not->toContain('Available fields:')
         ->and($exception->getMessage())->not->toContain('Did you mean:');
 });
 
-it('detects various typo patterns using levenshtein', function ($typo, $correct) {
+it('detects various typo patterns using levenshtein', function ($typo, $correct): void {
     $exception = new FieldNotFoundException(
         $typo,
         TestModel::class,
@@ -112,7 +112,7 @@ it('detects various typo patterns using levenshtein', function ($typo, $correct)
     ['creaated_at', 'created_at'],  // Extra letter
 ]);
 
-it('handles case insensitive suggestions', function () {
+it('handles case insensitive suggestions', function (): void {
     $exception = new FieldNotFoundException(
         'EMAIL',  // Uppercase
         TestModel::class,
@@ -122,7 +122,7 @@ it('handles case insensitive suggestions', function () {
     expect($exception->getMessage())->toContain('email');
 });
 
-it('prioritizes exact partial matches over distant ones', function () {
+it('prioritizes exact partial matches over distant ones', function (): void {
     $exception = new FieldNotFoundException(
         'user',
         TestModel::class,

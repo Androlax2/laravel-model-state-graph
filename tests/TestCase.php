@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Androlax\LaravelModelStateGraph\Tests;
+namespace Tests;
 
 use Androlax\LaravelModelStateGraph\LaravelModelStateGraphServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -22,7 +22,7 @@ final class TestCase extends Orchestra
         $this->setUpDatabase($this->app);
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => sprintf('Androlax\\LaravelModelStateGraph\\Tests\\Fixtures\\Factories\\%sFactory', class_basename($modelName))
+            fn (string $modelName): string => sprintf('Tests\\Fixtures\\Factories\\%sFactory', class_basename($modelName))
         );
     }
 
@@ -40,13 +40,10 @@ final class TestCase extends Orchestra
 
     protected function setUpDatabase(Application $app): void
     {
-        $app['db']->connection()->getSchemaBuilder()->create('test_models', function (Blueprint $table) {
+        $app['db']->connection()->getSchemaBuilder()->create('test_models', function (Blueprint $table): void {
             $table->increments('id');
             $table->timestamps();
             $table->string('name')->nullable();
-            $table->string('full_name')->nullable();
-            $table->double('salary')->nullable();
-            $table->boolean('is_visible')->default(true);
         });
     }
 }
