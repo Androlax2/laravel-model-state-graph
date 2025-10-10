@@ -44,9 +44,13 @@ class TestCase extends Orchestra
             $table->increments('id');
             $table->timestamps();
             $table->string('name')->nullable();
+            $table->text('description')->nullable();
             $table->integer("quantity")->nullable();
             $table->integer("height")->nullable();
             $table->integer("maximum_quantity")->nullable();
+            $table->integer("status")->nullable();
+            $table->integer("price")->nullable();
+            $table->string("category")->nullable();
         });
     }
 }

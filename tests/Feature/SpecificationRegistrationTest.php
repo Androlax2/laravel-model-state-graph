@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Androlax\LaravelModelStateGraph\Contexts\TransitionContext;
 use Androlax\LaravelModelStateGraph\Exceptions\DuplicateSpecificationException;
 use Androlax\LaravelModelStateGraph\Exceptions\FieldNotFoundException;
 use Androlax\LaravelModelStateGraph\FieldRulesGraph;
@@ -13,14 +14,14 @@ use Tests\Fixtures\Specifications\NameFieldSpecification;
 use Tests\Fixtures\Specifications\OtherNameFieldSpecification;
 use Tests\Fixtures\Specifications\QuantityFieldSpecification;
 
-it('can add field specification', function () {
+it('can add field specification', function (): void {
     $graph = FieldRulesGraph::for(TestModel::class)
         ->addSpecification(new NameFieldSpecification());
 
     expect($graph->getRegistry()->getSpecification('name'))->toBeInstanceOf(NameFieldSpecification::class);
 });
 
-it('can add multiple field specifications', function () {
+it('can add multiple field specifications', function (): void {
     $graph = FieldRulesGraph::for(TestModel::class)
         ->addSpecification(new NameFieldSpecification())
         ->addSpecification(new QuantityFieldSpecification())
@@ -41,30 +42,30 @@ it('can add multiple field specifications', function () {
         );
 });
 
-it('throws exception when adding non-specification object', function () {
+it('throws exception when adding non-specification object', function (): void {
     $graph = FieldRulesGraph::for(TestModel::class);
 
-    expect(fn () => $graph->addSpecification(new stdClass()))
+    expect(fn (): FieldRulesGraph => $graph->addSpecification(new stdClass()))
         ->toThrow(TypeError::class);
 });
 
-it('throws exception when adding duplicate specification', function () {
+it('throws exception when adding duplicate specification', function (): void {
     $graph = FieldRulesGraph::for(TestModel::class)
         ->addSpecification(new NameFieldSpecification());
 
-    expect(fn () => $graph->addSpecification(new NameFieldSpecification()))
+    expect(fn (): FieldRulesGraph => $graph->addSpecification(new NameFieldSpecification()))
         ->toThrow(DuplicateSpecificationException::class);
 });
 
-it('throws exception when adding a specification on a field that is already registered', function () {
+it('throws exception when adding a specification on a field that is already registered', function (): void {
     $graph = FieldRulesGraph::for(TestModel::class)
         ->addSpecification(new NameFieldSpecification());
 
-    expect(fn () => $graph->addSpecification(new OtherNameFieldSpecification()))
+    expect(fn (): FieldRulesGraph => $graph->addSpecification(new OtherNameFieldSpecification()))
         ->toThrow(DuplicateSpecificationException::class);
 });
 
-it('throws exception when adding a specification on a field that is not part of the model', function () {
+it('throws exception when adding a specification on a field that is not part of the model', function (): void {
     FieldRulesGraph::for(TestModel::class)
         ->addSpecification(
             new class extends FieldSpecification
@@ -72,6 +73,11 @@ it('throws exception when adding a specification on a field that is not part of 
                 public function getFieldName(): string
                 {
                     return 'unknown_field';
+                }
+
+                public function canModify(TransitionContext $context): bool
+                {
+                    return true;
                 }
             }
         );

@@ -70,8 +70,8 @@
       "@test:unit"
     ],
     "format": [
-      "lint",
-      "refactor"
+      "@lint",
+      "@refactor"
     ]
   },
   "config": {

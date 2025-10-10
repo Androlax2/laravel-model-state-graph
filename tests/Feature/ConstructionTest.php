@@ -6,21 +6,21 @@ use Androlax\LaravelModelStateGraph\FieldRulesGraph;
 use Illuminate\Database\Eloquent\Model;
 use Tests\Fixtures\Models\TestModel;
 
-it('throws exception when creating rules graph with constructor for non-model class', function () {
+it('throws exception when creating rules graph with constructor for non-model class', function (): void {
     final class Foo {}
 
-    expect(fn () => new FieldRulesGraph(Foo::class))
+    expect(fn (): FieldRulesGraph => new FieldRulesGraph(Foo::class))
         ->toThrow(InvalidArgumentException::class);
 });
 
-it('throws exception when creating rules graph with for() method for non-model class', function () {
+it('throws exception when creating rules graph with for() method for non-model class', function (): void {
     final class Bar {}
 
-    expect(fn () => FieldRulesGraph::for(Bar::class))
+    expect(fn (): FieldRulesGraph => FieldRulesGraph::for(Bar::class))
         ->toThrow(InvalidArgumentException::class);
 });
 
-it('successfully creates rules graph for model class', function () {
+it('successfully creates rules graph for model class', function (): void {
     $modelClass = new class extends Model {};
 
     $graph = new FieldRulesGraph($modelClass::class);
@@ -30,7 +30,7 @@ it('successfully creates rules graph for model class', function () {
     expect($graphFor->getEntityClass())->toBe($modelClass::class);
 });
 
-it('successfully creates rules graph for eloquent model', function () {
+it('successfully creates rules graph for eloquent model', function (): void {
     $graph = new FieldRulesGraph(TestModel::class);
     expect($graph->getEntityClass())->toBe(TestModel::class);
 

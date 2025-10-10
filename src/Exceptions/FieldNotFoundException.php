@@ -5,12 +5,16 @@ declare(strict_types=1);
 namespace Androlax\LaravelModelStateGraph\Exceptions;
 
 use Exception;
+use Illuminate\Database\Eloquent\Model;
 use Throwable;
 
 final class FieldNotFoundException extends Exception
 {
     private const int MAX_SUGGESTIONS = 3;
 
+    /**
+     * @param  array<string>  $availableFields
+     */
     public function __construct(
         string $field,
         string $modelClass,
@@ -23,7 +27,7 @@ final class FieldNotFoundException extends Exception
         parent::__construct($message, $code, $previous);
     }
 
-    public static function forField(string $field, object $model): self
+    public static function forField(string $field, Model $model): self
     {
         $modelClass = $model::class;
         $availableFields = array_keys($model->getAttributes());
@@ -45,6 +49,9 @@ final class FieldNotFoundException extends Exception
         return $matches[1] ?? '';
     }
 
+    /**
+     * @param  array<string>  $availableFields
+     */
     private function buildMessage(string $field, string $modelClass, array $availableFields): string
     {
         $baseMessage = sprintf("Field '%s' does not exist on model [%s].", $field, $modelClass);
@@ -62,13 +69,17 @@ final class FieldNotFoundException extends Exception
         return sprintf('%s Available fields: %s', $baseMessage, implode(', ', $availableFields));
     }
 
+    /**
+     * @param  array<string>  $availableFields
+     * @return array<string>
+     */
     private function getSuggestions(string $field, array $availableFields): array
     {
         $suggestions = [];
         $fieldLower = mb_strtolower($field);
 
         foreach ($availableFields as $availableField) {
-            $availableLower = mb_strtolower((string) $availableField);
+            $availableLower = mb_strtolower($availableField);
 
             // Simple Levenshtein distance for typo detection
             if (levenshtein($fieldLower, $availableLower) <= 2) {

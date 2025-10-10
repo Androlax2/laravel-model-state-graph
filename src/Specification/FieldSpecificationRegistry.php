@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 final class FieldSpecificationRegistry
 {
     /**
-     * @var FieldSpecification[]
+     * @var array<string, FieldSpecification>
      */
     private array $specifications = [];
 
@@ -47,19 +47,15 @@ final class FieldSpecificationRegistry
 
     public function hasSpecification(string $fieldName): bool
     {
-        return (bool) $this->getSpecification($fieldName);
+        return array_key_exists($fieldName, $this->specifications);
     }
 
     private function fieldExistsInEntity(string $fieldName): bool
     {
-        if (method_exists($this->entityClass, 'getConnection')) {
-            $model = new $this->entityClass();
-            $table = $model->getTable();
-            $columns = $model->getConnection()->getSchemaBuilder()->getColumnListing($table);
+        $model = new $this->entityClass();
+        $table = $model->getTable();
+        $columns = $model->getConnection()->getSchemaBuilder()->getColumnListing($table);
 
-            return in_array($fieldName, $columns);
-        }
-
-        return property_exists($this->entityClass, $fieldName);
+        return in_array($fieldName, $columns, true);
     }
 }

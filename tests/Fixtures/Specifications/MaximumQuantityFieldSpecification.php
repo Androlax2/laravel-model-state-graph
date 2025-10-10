@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Fixtures\Specifications;
 
+use Androlax\LaravelModelStateGraph\Contexts\TransitionContext;
 use Androlax\LaravelModelStateGraph\Specification\FieldSpecification;
 
 final class MaximumQuantityFieldSpecification extends FieldSpecification
@@ -11,5 +12,10 @@ final class MaximumQuantityFieldSpecification extends FieldSpecification
     public function getFieldName(): string
     {
         return 'maximum_quantity';
+    }
+
+    public function canModify(TransitionContext $context): bool
+    {
+        return true;
     }
 }
