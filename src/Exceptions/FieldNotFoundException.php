@@ -25,7 +25,7 @@ final class FieldNotFoundException extends Exception
 
     public static function forField(string $field, object $model): self
     {
-        $modelClass = get_class($model);
+        $modelClass = $model::class;
         $availableFields = array_keys($model->getAttributes());
 
         return new self($field, $modelClass, $availableFields);
@@ -49,13 +49,13 @@ final class FieldNotFoundException extends Exception
     {
         $baseMessage = sprintf("Field '%s' does not exist on model [%s].", $field, $modelClass);
 
-        if (empty($availableFields)) {
+        if ($availableFields === []) {
             return $baseMessage;
         }
 
         $suggestions = $this->getSuggestions($field, $availableFields);
 
-        if (! empty($suggestions)) {
+        if ($suggestions !== []) {
             return sprintf('%s Did you mean: %s?', $baseMessage, implode(', ', $suggestions));
         }
 
@@ -68,7 +68,7 @@ final class FieldNotFoundException extends Exception
         $fieldLower = mb_strtolower($field);
 
         foreach ($availableFields as $availableField) {
-            $availableLower = mb_strtolower($availableField);
+            $availableLower = mb_strtolower((string) $availableField);
 
             // Simple Levenshtein distance for typo detection
             if (levenshtein($fieldLower, $availableLower) <= 2) {

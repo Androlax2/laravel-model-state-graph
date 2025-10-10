@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Androlax\LaravelModelStateGraph\Tests\Fixtures\Factories;
+namespace Tests\Fixtures\Factories;
 
-use Androlax\LaravelModelStateGraph\Tests\Fixtures\Models\TestModel;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Tests\Fixtures\Models\TestModel;
 
 final class TestModelFactory extends Factory
 {

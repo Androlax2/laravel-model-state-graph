@@ -16,10 +16,8 @@ interface ValidationResult
 
     /**
      * Returns any violations that prevent the state transition.
-     *
-     * @return array<string, string[]>
      */
-    public function getViolations(): array;
+    public function getViolations(): FieldViolationCollection;
 
     /**
      * Returns the processing context if validation was successful.

@@ -26,4 +26,7 @@
 /lefthook.yml export-ignore
 /commitlint.config.js export-ignore
 /cspell.json export-ignore
+/cspell.config.js export-ignore
 /.lefthook export-ignore
+/Makefile export-ignore
+/Dockerfile export-ignore

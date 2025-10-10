@@ -16,10 +16,8 @@ interface ExecutionResult
 
     /**
      * Returns any violations that prevented successful execution.
-     *
-     * @return array<string, string[]>
      */
-    public function getViolations(): array;
+    public function getViolations(): FieldViolationCollection;
 
     /**
      * Returns the processing context containing computed values and metadata.

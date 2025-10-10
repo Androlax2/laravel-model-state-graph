@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Androlax\LaravelModelStateGraph\Contracts;
 
+use Illuminate\Database\Eloquent\Model;
+
 /**
  * Manages the execution of state transitions for entities.
  */
@@ -27,10 +29,10 @@ interface StateTransitionManager
     /**
      * Validates a state transition without executing it.
      */
-    public function validate(EntityState $current, EntityState $previous): ValidationResult;
+    public function validate(Model $current, Model $previous): ValidationResult;
 
     /**
      * Executes a state transition and returns the result.
      */
-    public function execute(EntityState $current, EntityState $previous): ExecutionResult;
+    public function execute(Model $current, Model $previous): ExecutionResult;
 }

@@ -1,9 +1,8 @@
 {
   "name": "laravel-model-state-graph",
   "devDependencies": {
+    "@androlax2/cspell-laravel": "^1.0.10",
     "@commitlint/config-conventional": "^20.0.0",
-    "@cspell/dict-php": "^4.0.15",
-    "@cspell/dict-software-terms": "^5.1.8",
     "cspell": "^9.2.1",
     "lefthook": "^1.13.6"
   }

@@ -12,14 +12,17 @@ interface ValidationContext
     /**
      * Adds a violation for a specific field.
      */
-    public function addViolation(string $field, string $message): void;
+    public function addViolation(FieldViolation $violation): void;
+
+    /**
+     * Creates and adds a violation for a specific field.
+     */
+    public function addFieldViolation(string $field, string $message, ?string $code = null): void;
 
     /**
      * Returns all recorded violations.
-     *
-     * @return array<string, string[]>
      */
-    public function getViolations(): array;
+    public function getViolations(): FieldViolationCollection;
 
     /**
      * Indicates whether any violations have been recorded.
