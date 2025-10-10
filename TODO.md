@@ -1,0 +1,5 @@
+- Transition rules
+- Apply transition
+- Dependency fields
+- Cross validation field
+- Go through even if a field cannot be modified

@@ -9,6 +9,7 @@ return RectorConfig::configure()
         __DIR__.'/src',
         __DIR__.'/tests',
     ])
+    ->withSkipPath(__DIR__.'/tests/TestCase.php')
     ->withPreparedSets(
         deadCode        : true,
         codeQuality     : true,

@@ -1,14 +1,35 @@
 <?php
 
-namespace Androlax\LaravelModelStateGraph\Tests;
+declare(strict_types = 1);
 
+namespace Tests;
+
+use Androlax\LaravelModelStateGraph\LaravelModelStateGraphServiceProvider;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Androlax\LaravelModelStateGraph\LaravelModelStateGraphServiceProvider;
 
 class TestCase extends Orchestra
 {
     use DatabaseMigrations;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->setUpDatabase($this->app);
+
+        Factory::guessFactoryNamesUsing(
+            fn (string $modelName): string => sprintf('Tests\\Fixtures\\Factories\\%sFactory', class_basename($modelName))
+        );
+    }
+
+    public function getEnvironmentSetUp($app): void
+    {
+        config()->set('database.default', 'testing');
+    }
 
     protected function getPackageProviders($app): array
     {
@@ -17,8 +38,19 @@ class TestCase extends Orchestra
         ];
     }
 
-    public function getEnvironmentSetUp($app): void
+    protected function setUpDatabase(Application $app): void
     {
-        config()->set('database.default', 'testing');
+        $app['db']->connection()->getSchemaBuilder()->create('test_models', function (Blueprint $table): void {
+            $table->increments('id');
+            $table->timestamps();
+            $table->string('name')->nullable();
+            $table->text('description')->nullable();
+            $table->integer("quantity")->nullable();
+            $table->integer("height")->nullable();
+            $table->integer("maximum_quantity")->nullable();
+            $table->integer("status")->nullable();
+            $table->integer("price")->nullable();
+            $table->string("category")->nullable();
+        });
     }
 }
