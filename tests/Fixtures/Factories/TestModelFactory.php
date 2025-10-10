@@ -15,6 +15,9 @@ final class TestModelFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
+            'quantity' => $this->faker->randomNumber(),
+            'height' => $this->faker->randomNumber(),
+            'maximum_quantity' => $this->faker->randomNumber(),
         ];
     }
 }
