@@ -20,6 +20,9 @@ final class FieldSpecificationRegistry
      */
     public function __construct(private readonly string $entityClass) {}
 
+    /**
+     * @throws FieldNotFoundException
+     */
     public function register(FieldSpecification $specification): void
     {
         $fieldName = $specification->getFieldName();
