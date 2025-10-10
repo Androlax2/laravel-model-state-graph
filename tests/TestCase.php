@@ -11,7 +11,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Orchestra\Testbench\TestCase as Orchestra;
 
-final class TestCase extends Orchestra
+class TestCase extends Orchestra
 {
     use DatabaseMigrations;
 

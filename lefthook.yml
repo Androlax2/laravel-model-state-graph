@@ -18,7 +18,7 @@ pre-commit:
   commands:
     pint:
       glob: "*.php"
-      run: ./vendor/bin/pint {staged_files} --config=pint.json
+      run: ./vendor/bin/pint --dirty
       stage_fixed: true
 
     spell-staged:
