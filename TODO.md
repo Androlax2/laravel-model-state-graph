@@ -1,8 +1,4 @@
 - Update README.md and increment it with every changes I do overtime so it's easier to work with.
-- Create a FieldRuleEngine
-- FieldSpecification: getRules(): array<Rule>
-    - get only the relevant rules that are satisfied to test against.
-- Rule : isSatisfiedBy(xxx):bool
 - Transition rules
     - Interface for SideEffects rules, dependant rules, cross validated rules
 - Artisan command to optimize (cache) -> look package development laravel, possible to plug cache system inside php artisan optimize
