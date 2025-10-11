@@ -59,16 +59,18 @@
     "test:lint": "pint --parallel --test",
     "test:types": "phpstan analyse --ansi --memory-limit=2G",
     "test:spell": "npx cspell \"**/*.php\" \"**/*.md\" \"**/*.json\" \"**/*.yml\"",
-    "test:unit": "pest --colors=always --parallel",
+    "test:unit": "pest --colors=always tests/Unit --parallel",
+    "test:feature": "pest --colors=always tests/Feature --parallel",
     "test:types-coverage": "pest --type-coverage",
     "test:coverage": "pest --colors=always --coverage --parallel",
     "test": [
       "@test:refactor",
       "@test:lint",
       "@test:types",
-      "@test:types-coverage",
       "@test:spell",
-      "@test:unit"
+      "@test:unit",
+      "@test:feature",
+      "@test:types-coverage"
     ],
     "format": [
       "@lint",
