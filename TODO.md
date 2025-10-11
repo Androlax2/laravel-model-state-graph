@@ -1,4 +1,14 @@
+- Create a FieldRuleEngine
+- FieldSpecification: getRules(): array<Rule>
+    - get only the relevant rules that are satisfied to test against.
+- Rule : isSatisfiedBy(xxx):bool
 - Transition rules
+    - Interface for SideEffects rules, dependant rules, cross validated rules
+- Artisan command to optimize (cache) -> look package development laravel, possible to plug cache system inside php artisan optimize
+- Artisan commands to create a model state graph
+    - For Field spec,
+    - For rules.
+- Visualize the graph in the command line
 - Apply transition
 - Dependency fields
 - Cross validation field

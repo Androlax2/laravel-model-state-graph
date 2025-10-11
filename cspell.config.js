@@ -22,7 +22,10 @@ const config = {
     "npm"
   ],
   words: [
-    "pipefail"
+    "pipefail",
+    "prereleased",
+    "stefanzweifel",
+    "shivammathur"
   ],
   flagWords: [],
   ignoreWords: [
