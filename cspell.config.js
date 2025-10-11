@@ -21,17 +21,15 @@ const config = {
     "docker",
     "npm"
   ],
-  words: [
-    "pipefail",
-    "prereleased",
-    "stefanzweifel",
-    "shivammathur"
-  ],
+  words: [],
   flagWords: [],
   ignoreWords: [
     "androlax",
     "Théo",
-    "Benoit"
+    "Benoit",
+    "stefanzweifel",
+    "shivammathur",
+    "pipefail"
   ],
   ignorePaths: [
     "tests"
