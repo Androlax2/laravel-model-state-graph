@@ -34,7 +34,8 @@ const config = {
     "shivammathur",
     "pipefail",
     "secretroot",
-    "mysqladmin"
+    "mysqladmin",
+    "ARRAYACCESS"
   ],
   ignorePaths: [
     "tests"
