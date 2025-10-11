@@ -1,3 +1,4 @@
+- Tests it supports relationship fields
 - Update README.md and increment it with every changes I do overtime so it's easier to work with.
 - Transition rules
     - Interface for SideEffects rules, dependant rules, cross validated rules
