@@ -24,8 +24,5 @@ jobs:
         with:
           prerelease: true
           prerelease-identifier: 'alpha'
-          publish: ${{ steps.check-version.outputs.tag != '' }}
-          tag: ${{ steps.check-version.outputs.tag }}
-          disable-autolabeler: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
