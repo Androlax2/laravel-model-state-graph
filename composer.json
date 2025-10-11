@@ -73,8 +73,8 @@
       "@test:types-coverage"
     ],
     "format": [
-      "@lint",
-      "@refactor"
+      "@refactor",
+      "@lint"
     ]
   },
   "config": {

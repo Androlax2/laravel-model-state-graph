@@ -11,6 +11,7 @@ use Androlax\LaravelModelStateGraph\Specification\FieldSpecification;
 use Androlax\LaravelModelStateGraph\Specification\FieldSpecificationRegistry;
 use Illuminate\Database\Eloquent\Model;
 use InvalidArgumentException;
+use Throwable;
 
 final readonly class FieldRulesGraph
 {
@@ -81,6 +82,9 @@ final readonly class FieldRulesGraph
         }
     }
 
+    /**
+     * @throws Throwable
+     */
     private function validateFieldTransition(
         Model $model,
         string $field,
@@ -93,11 +97,12 @@ final readonly class FieldRulesGraph
 
         $context = new TransitionContext($model, $field);
 
-        if (! $specification->canModify($context)) {
-            throw new FieldModificationException(
+        throw_unless(
+            $specification->canModify($context),
+            new FieldModificationException(
                 "Field '{$field}' cannot be modified.",
-            );
-        }
+            )
+        );
     }
 
     /**
@@ -120,10 +125,11 @@ final readonly class FieldRulesGraph
      */
     private function validateEntityClass(string $entityClass): void
     {
-        if (! is_subclass_of($entityClass, Model::class)) {
-            throw new InvalidArgumentException(
+        throw_unless(
+            is_subclass_of($entityClass, Model::class),
+            new InvalidArgumentException(
                 sprintf('Class %s must be an instance of %s', $entityClass, Model::class)
-            );
-        }
+            )
+        );
     }
 }

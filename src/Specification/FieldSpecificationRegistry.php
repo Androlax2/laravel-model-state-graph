@@ -20,22 +20,18 @@ final class FieldSpecificationRegistry
      */
     public function __construct(private readonly string $entityClass) {}
 
-    /**
-     * @throws FieldNotFoundException
-     */
     public function register(FieldSpecification $specification): void
     {
         $fieldName = $specification->getFieldName();
 
-        if ($this->hasSpecification($fieldName)) {
-            throw new DuplicateSpecificationException(
+        throw_if(
+            $this->hasSpecification($fieldName),
+            new DuplicateSpecificationException(
                 "Field '{$fieldName}' already has a specification"
-            );
-        }
+            )
+        );
 
-        if (! $this->fieldExistsInEntity($fieldName)) {
-            throw FieldNotFoundException::forField($fieldName, new $this->entityClass());
-        }
+        throw_unless($this->fieldExistsInEntity($fieldName), FieldNotFoundException::forField($fieldName, new $this->entityClass()));
 
         $this->specifications[$fieldName] = $specification;
     }
