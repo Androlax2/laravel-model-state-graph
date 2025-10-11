@@ -24,7 +24,10 @@ final class ModelStateGraph
      */
     public function __construct(private readonly string $modelClass)
     {
-        throw_if(! class_exists($this->modelClass) || ! is_subclass_of($this->modelClass, Model::class), new InvalidArgumentException("Class {$this->modelClass} is not a valid Eloquent model"));
+        throw_if(
+            ! class_exists($this->modelClass) || ! is_subclass_of($this->modelClass, Model::class),
+            new InvalidArgumentException("Class {$this->modelClass} is not a valid Eloquent model")
+        );
     }
 
     /**
@@ -38,6 +41,7 @@ final class ModelStateGraph
 
     /**
      * @param  FieldRuleSet<T>  $ruleSet
+     * @return static<T>
      *
      * @throws FieldNotFoundException
      */
@@ -64,6 +68,7 @@ final class ModelStateGraph
 
     /**
      * @param  T  $model
+     * @return array<int, string>
      */
     public function getViolations(Model $model): array
     {

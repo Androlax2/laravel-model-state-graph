@@ -23,7 +23,8 @@ const config = {
   ],
   words: [
     "autolabeler",
-    "prereleased"
+    "prereleased",
+    "docblocks"
   ],
   flagWords: [],
   ignoreWords: [

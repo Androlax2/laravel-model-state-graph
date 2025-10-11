@@ -6,6 +6,9 @@ namespace Androlax\LaravelModelStateGraph;
 
 final readonly class ValidationResult
 {
+    /**
+     * @param  array<int, string>  $violations
+     */
     public function __construct(
         private bool $isValid,
         private array $violations = []
@@ -16,6 +19,9 @@ final readonly class ValidationResult
         return $this->isValid;
     }
 
+    /**
+     * @return array<int, string>
+     */
     public function getViolations(): array
     {
         return $this->violations;
