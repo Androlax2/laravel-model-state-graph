@@ -1,8 +1,8 @@
 # This is my package laravel-model-state-graph
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/androlax2/laravel-model-state-graph.svg?style=flat-square)](https://packagist.org/packages/androlax2/laravel-model-state-graph)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/androlax2/laravel-model-state-graph/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/androlax2/laravel-model-state-graph/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/androlax2/laravel-model-state-graph/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/androlax2/laravel-model-state-graph/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/androlax2/laravel-model-state-graph/tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/Androlax2/laravel-model-state-graph/actions?query=workflow%3Atests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/androlax2/laravel-model-state-graph/formats.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/Androlax2/laravel-model-state-graph/actions?query=workflow%3AFormats+branch%3Amain++)
 [![Total Downloads](https://img.shields.io/packagist/dt/androlax2/laravel-model-state-graph.svg?style=flat-square)](https://packagist.org/packages/androlax2/laravel-model-state-graph)
 
 This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
@@ -11,9 +11,12 @@ This is where your description should go. Limit it to a paragraph or two. Consid
 
 [<img src="https://github-ads.s3.eu-central-1.amazonaws.com/laravel-model-state-graph.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/laravel-model-state-graph)
 
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
+We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us
+by [buying one of our paid products](https://spatie.be/open-source/support-us).
 
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address
+on [our contact page](https://spatie.be/about-us). We publish all received postcards
+on [our virtual postcard wall](https://spatie.be/open-source/postcards).
 
 ## Installation
 
