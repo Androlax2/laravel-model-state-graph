@@ -1,9 +1,20 @@
 {
   "name": "androlax2/laravel-model-state-graph",
-  "description": "This is my package laravel-model-state-graph",
+  "description": "A powerful state transition system for Laravel Eloquent models that provides field-level validation and business rule enforcement.",
   "keywords": [
     "laravel",
-    "laravel-model-state-graph"
+    "laravel-model-state-graph",
+    "business",
+    "rule",
+    "transition",
+    "eloquent",
+    "database",
+    "field",
+    "validation",
+    "graph",
+    "specification",
+    "state",
+    "enforce"
   ],
   "homepage": "https://github.com/androlax2/laravel-model-state-graph",
   "license": "MIT",
