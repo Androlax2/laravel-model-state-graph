@@ -32,7 +32,9 @@ const config = {
     "Benoit",
     "stefanzweifel",
     "shivammathur",
-    "pipefail"
+    "pipefail",
+    "secretroot",
+    "mysqladmin"
   ],
   ignorePaths: [
     "tests"

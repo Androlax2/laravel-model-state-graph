@@ -1,4 +1,3 @@
-- Tests PHP 8.2 and Laravel 10 inside tests
 - Add rector-laravel
 - Update README.md and increment it with every changes I do overtime so it's easier to work with.
 - Create a FieldRuleEngine
