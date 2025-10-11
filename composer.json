@@ -16,16 +16,16 @@
   ],
   "require": {
     "php": "^8.2",
-    "illuminate/contracts": "^11.0||^12.0"
+    "illuminate/contracts": "^10.0|^11.0|^12.0"
   },
   "require-dev": {
-    "canvural/larastan-strict-rules": "^3.0",
+    "canvural/larastan-strict-rules": "^2.0||^3.0",
     "driftingly/rector-laravel": "^2.0",
-    "larastan/larastan": "^3.0",
+    "larastan/larastan": "^2.0||^3.0",
     "laravel/pint": "^1.14",
     "nunomaduro/collision": "^8.8",
-    "orchestra/testbench": "^10.0.0||^9.0.0",
-    "pestphp/pest": "^4.0",
+    "orchestra/testbench": "^7.0|^8.0|^9.0|^10.0",
+    "pestphp/pest": "^2.0|^3.7|^4.0",
     "pestphp/pest-plugin-arch": "^4.0",
     "pestphp/pest-plugin-laravel": "^4.0",
     "pestphp/pest-plugin-type-coverage": "^4.0",
