@@ -21,7 +21,10 @@ const config = {
     "docker",
     "npm"
   ],
-  words: [],
+  words: [
+    "autolabeler",
+    "prereleased"
+  ],
   flagWords: [],
   ignoreWords: [
     "androlax",

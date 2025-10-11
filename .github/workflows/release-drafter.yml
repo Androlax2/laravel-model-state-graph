@@ -7,8 +7,6 @@ on:
 
   pull_request:
     types: [ opened, reopened, synchronize ]
-  pull_request_target:
-    types: [ opened, reopened, synchronize ]
 
 permissions:
   contents: read
@@ -23,5 +21,11 @@ jobs:
 
     steps:
       - uses: release-drafter/release-drafter@v6
+        with:
+          prerelease: true
+          prerelease-identifier: 'alpha'
+          publish: ${{ steps.check-version.outputs.tag != '' }}
+          tag: ${{ steps.check-version.outputs.tag }}
+          disable-autolabeler: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
