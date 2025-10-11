@@ -23,6 +23,5 @@ jobs:
       - uses: release-drafter/release-drafter@v6
         with:
           prerelease: true
-          prerelease-identifier: 'alpha'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
