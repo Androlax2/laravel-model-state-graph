@@ -6,12 +6,10 @@ namespace Androlax\LaravelModelStateGraph;
 
 use Androlax\LaravelModelStateGraph\Contexts\TransitionContext;
 use Androlax\LaravelModelStateGraph\Exceptions\FieldModificationException;
-use Androlax\LaravelModelStateGraph\Exceptions\FieldNotFoundException;
 use Androlax\LaravelModelStateGraph\Specification\FieldSpecification;
 use Androlax\LaravelModelStateGraph\Specification\FieldSpecificationRegistry;
 use Illuminate\Database\Eloquent\Model;
 use InvalidArgumentException;
-use Throwable;
 
 final readonly class FieldRulesGraph
 {
@@ -43,9 +41,6 @@ final readonly class FieldRulesGraph
         return $this->entityClass;
     }
 
-    /**
-     * @throws FieldNotFoundException
-     */
     public function addSpecification(FieldSpecification $specification): self
     {
         $this->registry->register($specification);
@@ -55,8 +50,6 @@ final readonly class FieldRulesGraph
 
     /**
      * @param  FieldSpecification[]  $specifications
-     *
-     * @throws FieldNotFoundException
      */
     public function addSpecifications(array $specifications): self
     {
@@ -82,9 +75,6 @@ final readonly class FieldRulesGraph
         }
     }
 
-    /**
-     * @throws Throwable
-     */
     private function validateFieldTransition(
         Model $model,
         string $field,
