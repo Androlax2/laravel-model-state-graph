@@ -10,7 +10,7 @@ use Throwable;
 
 final class FieldNotFoundException extends Exception
 {
-    private const int MAX_SUGGESTIONS = 3;
+    private const MAX_SUGGESTIONS = 3;
 
     /**
      * @param  array<string>  $availableFields
